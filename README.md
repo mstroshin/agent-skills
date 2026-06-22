@@ -15,6 +15,20 @@ Original skills in this repository:
 
 Curated external skills are recommended, not vendored. See `references/recommended-external-skills.md`.
 
+## Interactive installer
+
+Choose own and external skills, scope, and optional agent targets:
+
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/mstroshin/agent-skills/main/scripts/install-selected.sh)
+```
+
+Or from a local clone:
+
+```bash
+./scripts/install-selected.sh
+```
+
 ## Quick install
 
 Install all original skills:

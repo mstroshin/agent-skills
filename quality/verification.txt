@@ -2,3 +2,5 @@ Local validation: ./scripts/validate.sh -> Validation passed
 Local discovery: npx skills add . --list --full-depth -> found 4 skills
 Remote discovery: npx skills add mstroshin/agent-skills --list -> found 4 skills
 Factory discovery: npx skills add hmlongco/Factory --skill factory-dependency-injection --full-depth --list -> found factory-dependency-injection
+Installer tests: ./tests/install-selected-test.sh -> install-selected tests passed
+Installer syntax: ./scripts/validate.sh -> bash -n scripts/install-selected.sh and tests/install-selected-test.sh passed

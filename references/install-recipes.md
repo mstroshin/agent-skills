@@ -1,5 +1,19 @@
 # Install Recipes
 
+## Interactive installer
+
+Use the interactive pure Bash installer to select own and external skills, install scope, and optional agent targets:
+
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/mstroshin/agent-skills/main/scripts/install-selected.sh)
+```
+
+From a local clone:
+
+```bash
+./scripts/install-selected.sh
+```
+
 ## Original skills from this repository
 
 ```bash

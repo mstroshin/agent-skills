@@ -23,15 +23,23 @@ for skill in "${required_skills[@]}"; do
   grep -q '^## Common Mistakes' "$file" || { echo "Missing Common Mistakes in $file" >&2; exit 1; }
 done
 
-for required in README.md LICENSE references/install-recipes.md references/recommended-external-skills.md quality/skill-scenarios.md; do
+for required in README.md LICENSE references/install-recipes.md references/recommended-external-skills.md quality/skill-scenarios.md tests/install-selected-test.sh; do
   test -f "$required" || { echo "Missing $required" >&2; exit 1; }
 done
+
+test -x scripts/install-selected.sh || { echo "scripts/install-selected.sh must be executable" >&2; exit 1; }
+test -x tests/install-selected-test.sh || { echo "tests/install-selected-test.sh must be executable" >&2; exit 1; }
 
 grep -q 'npx skills add mstroshin/agent-skills --skill apple-platform-router' README.md
 grep -q 'npx skills add mstroshin/agent-skills --skill oslog-debugging' README.md
 grep -q 'npx skills add mstroshin/agent-skills --skill swiftui-accessibility-identifiers' README.md
 grep -q 'npx skills add mstroshin/agent-skills --skill mvvm-c-architecture' README.md
 grep -q 'npx skills add hmlongco/Factory --skill factory-dependency-injection --full-depth' README.md
+grep -q 'scripts/install-selected.sh' README.md
+grep -q 'scripts/install-selected.sh' references/install-recipes.md
+
+bash -n scripts/install-selected.sh
+bash -n tests/install-selected-test.sh
 
 test ! -d .agents || { echo "Do not vendor local .agents skills" >&2; exit 1; }
 test ! -d .claude || { echo "Do not vendor local .claude skills" >&2; exit 1; }
